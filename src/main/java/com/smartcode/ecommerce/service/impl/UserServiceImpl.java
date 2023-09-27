@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
         UserEntity entity = userMapper.toEntity(request);
 
         entity.setCode("456879");
-
+        entity.setBalance(new BigDecimal(0));
         UserEntity saved = userRepository.save(entity);
         return userMapper.toDto(saved);
     }
