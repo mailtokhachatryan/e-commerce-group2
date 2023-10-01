@@ -2,6 +2,7 @@ package com.smartcode.ecommerce.controller;
 
 import com.smartcode.ecommerce.model.dto.UserCreateRequest;
 import com.smartcode.ecommerce.model.dto.UserDto;
+import com.smartcode.ecommerce.model.dto.filter.UserFilterModel;
 import com.smartcode.ecommerce.model.entity.UserEntity;
 import com.smartcode.ecommerce.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -25,34 +26,19 @@ public class UserController {
         return ResponseEntity.ok(userService.create(request));
     }
 
-    @GetMapping
-    public ResponseEntity<List<UserDto>> getAll() {
-        try {
-            return ResponseEntity.ok(userService.getAll());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(400).build();
-        }
+    @PostMapping("/filter")
+    public ResponseEntity<List<UserDto>> getAll(@RequestBody UserFilterModel userFilterModel) {
+        return ResponseEntity.ok(userService.getAll(userFilterModel));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getById(@PathVariable Integer id) {
-        try {
-            return ResponseEntity.ok(userService.getById(id));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(400).build();
-        }
+        return ResponseEntity.ok(userService.getById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> update(@PathVariable Integer id, @RequestBody UserEntity userEntity) {
-        try {
-            return new ResponseEntity<>(userService.update(id, userEntity), HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(400).build();
-        }
+        return new ResponseEntity<>(userService.update(id, userEntity), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

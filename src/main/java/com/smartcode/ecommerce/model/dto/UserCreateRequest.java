@@ -11,7 +11,6 @@ import javax.validation.constraints.NotBlank;
 public class UserCreateRequest extends BaseUserDto {
 
     @NotBlank
-    @Min(8)
 //    @Pattern(regexp="[\w_\\.]+")
     private String password;
 }
