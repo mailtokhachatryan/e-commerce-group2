@@ -44,4 +44,7 @@ public class UserEntity {
     @Column(nullable = false)
     private boolean isVerified;
 
+    @ManyToOne(optional = false)
+    private RoleEntity role;
+
 }

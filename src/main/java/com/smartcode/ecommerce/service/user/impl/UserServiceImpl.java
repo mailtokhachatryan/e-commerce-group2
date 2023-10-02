@@ -1,20 +1,18 @@
-package com.smartcode.ecommerce.service.impl;
+package com.smartcode.ecommerce.service.user.impl;
 
 import com.smartcode.ecommerce.exceptions.ResourceNotFoundException;
 import com.smartcode.ecommerce.mapper.UserMapper;
-import com.smartcode.ecommerce.model.dto.UserCreateRequest;
 import com.smartcode.ecommerce.model.dto.UserDto;
 import com.smartcode.ecommerce.model.dto.filter.UserFilterModel;
 import com.smartcode.ecommerce.model.entity.UserEntity;
 import com.smartcode.ecommerce.repository.UserRepository;
-import com.smartcode.ecommerce.service.UserService;
+import com.smartcode.ecommerce.service.user.UserService;
 import com.smartcode.ecommerce.spec.UserSpecification;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Slf4j
@@ -27,18 +25,7 @@ public class UserServiceImpl implements UserService {
     private final UserSpecification userSpecification;
 
 
-    @Override
-    @Transactional
-    public UserDto create(UserCreateRequest request) {
-        log.info("user creation started");
-        UserEntity entity = userMapper.toEntity(request);
 
-        entity.setCode("456879");
-        entity.setBalance(new BigDecimal(0));
-        UserEntity saved = userRepository.save(entity);
-        log.info("user creation done");
-        return userMapper.toDto(saved);
-    }
 
     @Override
     @Transactional(readOnly = true)

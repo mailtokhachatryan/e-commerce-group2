@@ -1,6 +1,5 @@
-package com.smartcode.ecommerce.service;
+package com.smartcode.ecommerce.service.user;
 
-import com.smartcode.ecommerce.model.dto.UserCreateRequest;
 import com.smartcode.ecommerce.model.dto.UserDto;
 import com.smartcode.ecommerce.model.dto.filter.UserFilterModel;
 import com.smartcode.ecommerce.model.entity.UserEntity;
@@ -8,7 +7,6 @@ import com.smartcode.ecommerce.model.entity.UserEntity;
 import java.util.List;
 
 public interface UserService {
-    UserDto create(UserCreateRequest request);
 
     List<UserDto> getAll(UserFilterModel userFilterModel);
 

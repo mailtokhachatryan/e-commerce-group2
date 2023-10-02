@@ -12,4 +12,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer>, JpaSpecificationExecutor<UserEntity> {
 
+    UserEntity findByEmail(String email);
+
+    boolean existsByEmail(String mail);
 }
